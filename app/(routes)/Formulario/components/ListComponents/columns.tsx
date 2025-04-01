@@ -130,7 +130,7 @@ export const getColumns = (
   },
 ];
 
-// Componente principal que renderiza la tabla y gestiona el dialogo de edición
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export default function MaterialsTable({ data }: { data: Material[] }) {
   // Estados para controlar la apertura del dialogo y los datos seleccionados para editar
   const [openDialog, setOpenDialog] = useState(false);
@@ -142,7 +142,7 @@ export default function MaterialsTable({ data }: { data: Material[] }) {
     setOpenDialog(true);   // Abrimos el dialogo
   };
 
-  // Obtenemos las columnas pasando la función de edición
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   const columns = getColumns(handleEditClick);
 
   return (
