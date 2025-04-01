@@ -3,32 +3,33 @@
 //import { useState } from "react"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { format } from "date-fns";
-import { es } from "date-fns/locale";
+import { format, parseISO } from "date-fns";
+//import { es } from "date-fns/locale";
 import { useForm } from "react-hook-form"
 import { saveData, updateData } from "../../../../../services/firebaseService";
 import { z } from "zod"
 
-import { cn } from "@/lib/utils"
+//import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Form,
-  FormControl,
+  //FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-  } from "@/components/ui/popover"
+// import {
+//     Popover,
+//     PopoverContent,
+//     PopoverTrigger,
+//   } from "@/components/ui/popover"
+//   import DatePicker from "react-datepicker";
   
-import { Calendar } from "@/components/ui/calendar"
+
 import { Input } from "@/components/ui/input"
 import { FormCreateCustomersProps } from "./FormCreateCustomers.type"
-import {  CalendarIcon, Check } from "lucide-react"
+import {   Check } from "lucide-react"
 import { toast } from "sonner";
 
 const formSchema = z.object({
@@ -99,9 +100,17 @@ export  function FormCreateCustomers(props: FormCreateCustomersProps) {
                 <FormItem>
                   <FormLabel>Fecha de Registro</FormLabel>
              
+                  <Input
+                    placeholder="Selecciona una fecha"
+                    type="date"
+                    className="w-auto pl-3 text-left text-sm font-normal"
+                    value={field.value ? format(field.value, "yyyy-MM-dd") : ""} // Convierte la fecha a formato adecuado para el input
+                    onChange={(e) => field.onChange(e.target.value ? parseISO(e.target.value) : null)} // Convierte la fecha seleccionada en Date
+                  />
 
 
-              <Popover>
+
+              {/* <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
                     <Button
@@ -121,7 +130,7 @@ export  function FormCreateCustomers(props: FormCreateCustomersProps) {
                   </FormControl>
                 </PopoverTrigger>
                 <PopoverContent className="w-full p-0" align="center">
-                  <Calendar
+                  {/* <Calendar
                     mode="single"
                     selected={field.value ?? undefined}
                     onSelect={field.onChange}
@@ -133,9 +142,19 @@ export  function FormCreateCustomers(props: FormCreateCustomersProps) {
                     }}
                     locale={es}
                     
-                  />
+                  /> 
+
+                <DatePicker
+                          mode="single"
+                          selected={field.value ?? undefined}
+                          onSelect={field.onChange}
+                          dateFormat="PPP"
+                          locale={es}
+                          className="w-full p-2 rounded-md"
+                        />
+
                 </PopoverContent>
-              </Popover>
+              </Popover> */}
 
 
 
